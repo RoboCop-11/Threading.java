@@ -12,3 +12,17 @@ public class IncrementThread extends Thread {
         this.delayMillis = delay;
     }
 
+    // The logic that runs in the thread
+    public void run() {
+        while (true) {
+            System.out.println("Thread " + Thread.currentThread().getId() + " Value: " + currentValue);
+            currentValue += incrementStep;
+            try {
+                Thread.sleep(delayMillis); // Pause for delayMillis milliseconds
+            } catch (InterruptedException e) {
+                System.out.println("Thread interrupted.");
+                break;
+            }
+        }
+    }
+}
